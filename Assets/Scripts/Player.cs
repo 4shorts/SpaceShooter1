@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _lives = 3;
     [SerializeField]
+    private GameObject _rightEngine;
+    [SerializeField]
+    private GameObject _leftEngine;
+    [SerializeField]
     private GameObject _shieldVisualizer;
     [SerializeField]
     private int _score;
@@ -141,8 +145,17 @@ public class Player : MonoBehaviour
             return;
         }
         else
-        {
+        {           
             _lives--;
+
+            if (_lives == 2)
+            {
+                _rightEngine.SetActive(true);
+            }
+            else if (_lives == 1)
+            {
+                _leftEngine.SetActive(true);
+            }
 
             _uiManager.UpdateLives(_lives);
 
